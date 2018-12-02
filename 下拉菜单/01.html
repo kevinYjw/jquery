@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jquery实现下拉菜单</title>
+	<link rel="stylesheet" href="./../reset.css">
+	<script src="./../jquery-3.3.1.js"></script>
+	<style>
+		.menuWrap{
+			width:340px;
+			height:30px;
+			background:rgb(43, 185, 251);
+			color:#000;
+			margin:100px auto 0;
+			padding:0 10px;
+			border-radius:5px;
+		}
+
+		.menuWrap .oneMenu{
+			display: flex;
+		}
+
+		.menuWrap .oneMenu > li{
+			flex:1;
+			height:30px;
+			margin-right:10px;
+			background:rgb(139, 217, 253);
+			text-align:center;
+			line-height: 30px;
+			border-radius:5px;
+			cursor:pointer;
+		}
+		.menuWrap ul li:last-child{
+			margin-right:0;
+		}
+		.twoMenu{
+			display: none;
+		}
+		.twoMenu li{
+			height:30px;
+			background:rgb(139, 217, 253);
+			text-align:center;
+			line-height: 30px;
+			border-radius:5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="menuWrap">
+		<ul class="oneMenu">
+			<li>一级菜单1
+				<ul class="twoMenu">
+					<li>一级菜单1</li>
+					<li>一级菜单2</li>
+					<li>一级菜单3</li>
+		    </ul>
+			</li>
+			<li>一级菜单2
+			  <ul class="twoMenu">
+					<li>一级菜单1</li>
+					<li>一级菜单2</li>
+					<li>一级菜单3</li>
+		    </ul>
+	   </li>
+			<li>一级菜单3
+			<ul class="twoMenu">
+					<li>一级菜单1</li>
+					<li>一级菜单2</li>
+					<li>一级菜单3</li>
+		  </ul>
+	</li>
+		</ul>
+	</div>
+	<script>
+		$(function(){
+			$('.oneMenu li').hover(function(){
+				console.log('aa')
+				$(this).children("ul").slideToggle();;
+			})
+		})
+	</script>
+</body>
+</html>                                
