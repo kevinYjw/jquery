@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弹出广告</title>
+	<link rel="stylesheet" href="./../reset.css">
+	<script src="./../jquery-3.3.1.js"></script>
+	<style>
+		.advertising{
+			display:none;
+			position:absolute;
+			bottom:0;
+			right:0;
+			width:230px;
+			height:120px;
+			background-image:url('./imgs/ad.jpg');
+			background-size:100%;
+		}
+		#close{
+			position: absolute;
+			right:0;
+			top:0;
+			width:40px;
+			height:18px;
+			background-image:url('./imgs/h.jpg');
+			background-size:100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="advertising">
+		<span id="close"></span>
+	</div>
+	<script>
+		$(function(){
+			$('.advertising').slideDown('normal').slideUp('slow').fadeIn(1000);
+			$('#close').on('click',function(){
+				$('.advertising').hide();
+			})
+		})
+	</script>
+</body>
+</html>
