@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播图</title>
+	<link rel="stylesheet" href="./../reset.css">
+	<script src="./../jquery-3.3.1.js"></script>
+	<style>
+		.wrap{
+			position:relative;
+			width:670px;
+			height:240px;
+			margin:100px auto;
+			overflow: hidden;
+		}
+		.wrap .keyWrap{
+			position:absolute;
+			right:0;
+			bottom:10px;
+		}
+		.wrap .keyWrap li{
+			float:left;
+			width:20px;
+			height:20px;
+			border-radius:50%;
+			margin:0 5px;
+			text-align: center;
+			cursor: pointer;
+			background:#abc;
+			z-index:5;
+		}
+		.wrap .keyWrap li.active{
+			background:pink;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<ul class="slideWrap">
+			<li><img src="./images/1.jpg"></li>
+			<li><img src="./images/2.jpg"></li>
+			<li><img src="./images/3.jpg"></li>
+			<li><img src="./images/4.jpg"></li>
+			<li><img src="./images/5.jpg"></li>
+			<li><img src="./images/6.jpg"></li>
+		</ul>
+		<ul class="keyWrap">
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+		</ul>
+	</div>
+	<script>
+		$(function(){
+			var timer;
+			var index = 0;
+			$('.keyWrap li').click(function(){
+				index = $(this).index();
+				$(this).addClass('active').siblings().removeClass('active');
+				$('.slideWrap li').eq(index).fadeIn().siblings().fadeOut();
+			})
+			$('.wrap').mouseleave(function(){
+				timer = setInterval(function(){
+					index++;
+					if(index > 5){
+						index = 0;
+					}
+					$('.slideWrap li').eq(index).fadeIn().siblings().fadeOut();
+					$('.keyWrap li').eq(index).addClass('active').siblings().removeClass('active');
+				},2000)
+			});
+			$('.wrap').mouseenter(function(){
+				clearInterval(timer);
+			})
+			$('.wrap').trigger('mouseleave');
+		})
+	</script>
+</body>
+</html>
