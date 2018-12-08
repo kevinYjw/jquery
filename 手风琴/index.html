@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>手风琴</title>
+	<link rel="stylesheet" href="./../reset.css">
+	<script src="./../jquery-3.3.1.js"></script>
+	<style>
+		.wrap{
+			width:1010px;
+			margin:100px auto;
+		}
+		.wrap li{
+			width:200px;
+			float:left;
+			height:400px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<script>
+		$(function(){
+			$('.wrap li').each(function(index,ele){
+				$(ele).css({
+					'background':'url(./images/'+ (index + 1) +'.jpg)',
+				});
+			}).mouseenter(function(){
+				$(this).stop().animate({width:600},500).siblings().stop().animate({width:100},500)
+			}).mouseleave(function(){
+				$('.wrap li').stop().animate({width:200},500);
+			});
+		})
+	</script>
+</body>
+</html>
